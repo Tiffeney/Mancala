@@ -58,7 +58,27 @@ p {
   border-radius: 20px;
 }
 
-button {
-  margin: 0 auto;
-
+#id {
+  position: absolute;
 }
+
+ul {
+  float: right;
+  padding: 25px;
+}
+
+li {
+  margin: 20px;
+}
+
+button {
+
+    margin-top:167px;
+    width: 200px;
+    height:34px;
+    padding: 20px;
+  position: absolute;
+  top: 30%;
+  margin-left: 570px;
+}
+
