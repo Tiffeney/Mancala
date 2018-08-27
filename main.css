@@ -1,0 +1,64 @@
+h1 {
+  font-family: 'Syncopate', sans-serif;
+  text-align: center;
+  font-size: 400%;
+}
+
+p {
+  font-family: 'Syncopate', sans-serif;
+  text-align: center;
+  font-size: 60%;
+  margin: 10px;
+}
+
+#board-game {
+  padding: 20px;
+  width: 50%;
+  height: 110px;
+  position: absolute;
+    left: 325px;
+    top: 200px;
+ 
+}
+
+.side-by-side {
+  display: inline-block;
+  vertical-align: middle;
+  margin: -2px;
+  height: 100%;
+  padding: 10px;
+}
+
+#left-side {
+  background: lightblue;
+  width: 20%;
+}
+
+#center {
+  background: #fbe7b2;
+  width: 50%;
+}
+
+#right-side {
+  background: lightblue;
+  width: 20%;
+}
+
+.cell {
+  display: inline-block;
+  width: 15%;
+  border-radius: 50%;
+  height: 50px;
+  background: gray;
+}
+
+.big-cell {
+  background: gray;
+  height: 100%;
+  border-radius: 20px;
+}
+
+button {
+  margin: 0 auto;
+
+}
