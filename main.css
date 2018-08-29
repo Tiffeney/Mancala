@@ -50,6 +50,11 @@ p {
   border-radius: 50%;
   height: 50px;
   background: gray;
+  text-align: center;
+  line-height: 50px;
+  font-size: 24px;
+  color: black;
+  margin: 1px;
 }
 
 .big-cell {
@@ -64,21 +69,23 @@ p {
 
 ul {
   float: right;
-  padding: 25px;
+  padding: 10px;
 }
 
 li {
-  margin: 20px;
+ margin-top: 20px;
 }
 
 button {
-
-    margin-top:167px;
-    width: 200px;
-    height:34px;
-    padding: 20px;
-  position: absolute;
-  top: 30%;
-  margin-left: 570px;
+margin-top:167px;
+width: 200px;
+height:34px;
+padding: 20px;
+position: absolute;
+top: 30%;
+margin-left: 570px;
 }
 
+body {
+  background:lightcyan;
+}
