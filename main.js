@@ -66,33 +66,46 @@ function toggleTurn() {
     currentTurn = nextTurn;
 }
 
+function checkHit() {
+
+}
+
 function moveStones(e) {
     let indexPosition = e.target.getAttribute('key');
     // console.log(indexPosition);
 
     let currentCell = gameboard[indexPosition];
 
-    if (currentCell.owner === currentTurn) {
+    if (currentCell.stones === 0) {
+        alert('This cell has no stones - go again');
+    } else if (currentCell.owner != currentTurn) {
+        alert("Can't Click on this cell.") 
+    } else {
         let remainder = 0;
         console.log(currentCell.stones)
         for (let i = 1; i < currentCell.stones+1 ; i++) {
             let nextIndex = parseInt(indexPosition) + i;
             let nextCell = gameboard[nextIndex];
-            nextCell.stones++;
+            if (nextCell === undefined) {
+                remainder++;
+            } else {
+                nextCell.stones++;
+            }
         }
         
+        if (remainder > 0) {
+            for (let i = 0; i < remainder; i++) {
+                gameboard[i].stones++
+            }
+        }
         currentCell.stones = 0;
     
-    
+
         //if the number of stones equals ''
     
         populateGameBoard();
+        checkHit();
         toggleTurn();
-        var popup = window.open;
-    } else if (currentCell.stones === 0) {
-        alert('This cell has no stones - go again');
-    } else {
-        alert("Can't Click on this cell.")
     }
 }
 
