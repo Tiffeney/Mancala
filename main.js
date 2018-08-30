@@ -69,14 +69,9 @@ function toggleTurn() {
 function moveStones(e) {
     let indexPosition = e.target.getAttribute('key');
     // console.log(indexPosition);
-    // Based on current indexposition, move stones in gameboard array to adjacent cells
-    // if (currentTurn === "Player1") {
-    //     for (let i = 0; i <)
-    // } else {
 
-    // }
+    let currentCell = gameboard[indexPosition];
 
-    let currentCell = gameboard[indexPosition]
     if (currentCell.owner === currentTurn) {
         let remainder = 0;
         console.log(currentCell.stones)
@@ -89,11 +84,11 @@ function moveStones(e) {
         currentCell.stones = 0;
     
     
-    
         //if the number of stones equals ''
     
         populateGameBoard();
         toggleTurn();
+        var popup = window.open;
     } else if (currentCell.stones === 0) {
         alert('This cell has no stones - go again');
     } else {
