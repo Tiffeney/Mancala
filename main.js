@@ -17,6 +17,7 @@ let startButton = document.querySelector('button');
 let cells = document.querySelectorAll('.cell');
 let row2 = document.querySelector('#row-2');
 let row1 = document.querySelector('#row-1');
+let bigCells = document.querySelectorAll('.big-cell')
 
 // UTILITY FUNCTIONS
 function createGameBoard() {
@@ -28,20 +29,41 @@ function createGameBoard() {
             let cell = new Cell('big', 0, 'player2');
             gameboard.push(cell);
         } else if (i < 6) {
-            let cell = new Cell('normal', 4, 'player1');
+            let cell = new Cell('normal', 4, 'Player1');
             gameboard.push(cell);
         } else {
-            let cell = new Cell('normal', 4, 'player2');
+            let cell = new Cell('normal', 4, 'Player2');
             gameboard.push(cell);
         }
     }
 }
 
-function populateGameBoard(row, startPosition) {
-    for (let i = 0; i < row.length; i++) {
-        let currentPosition = i + startPosition;
-        row[i].innerText = gameboard[currentPosition].stones;
+// function populateGameBoard(row, startPosition) {
+//     for (let i = 0; i < row.length; i++) {
+//         let currentPosition = i + startPosition;
+//         row[i].innerText = gameboard[currentPosition].stones;
+//     }
+// }
+
+function populateGameBoard() {
+    
+    for (let i = 0; i < 6; i++) {
+        let currentPosition = i + 0;
+        row2.children[i].innerText = gameboard[currentPosition].stones;
     }
+
+    for (let i = 0; i < 6; i++) {
+        let currentPosition = i + 7;
+        row1.children[i].innerText = gameboard[currentPosition].stones;
+    }
+
+    bigCells[0].innerText = gameboard[6].stones;
+    bigCells[1].innerText = gameboard[13].stones;
+}
+
+function toggleTurn() {
+    let nextTurn = (currentTurn === "Player1" ? "Player2" : "Player1");
+    currentTurn = nextTurn;
 }
 
 function moveStones(e) {
@@ -55,18 +77,28 @@ function moveStones(e) {
     // }
 
     let currentCell = gameboard[indexPosition]
-    console.log(currentCell.stones)
-    for (let i = 1; i < currentCell.stones+1 ; i++) {
-        let nextIndex = parseInt(indexPosition) + i;
-        let nextCell = gameboard[nextIndex];
-        nextCell.stones++;
+    if (currentCell.owner === currentTurn) {
+        let remainder = 0;
+        console.log(currentCell.stones)
+        for (let i = 1; i < currentCell.stones+1 ; i++) {
+            let nextIndex = parseInt(indexPosition) + i;
+            let nextCell = gameboard[nextIndex];
+            nextCell.stones++;
+        }
+        
+        currentCell.stones = 0;
+    
+    
+    
+        //if the number of stones equals ''
+    
+        populateGameBoard();
+        toggleTurn();
+    } else if (currentCell.stones === 0) {
+        alert('This cell has no stones - go again');
+    } else {
+        alert("Can't Click on this cell.")
     }
-
-    currentCell.stones = 0;
-
-    populateGameBoard(row2.children, 0);
-    let nextTurn = (currentTurn === "Player1" ? "Player2" : "Player1");
-    currentTurn = nextTurn;
 }
 
 function createCellEvents() {
@@ -77,8 +109,7 @@ function createCellEvents() {
 // INITIAL EVENT LISTENER
 startButton.addEventListener('click', function() {
     createGameBoard();
-    populateGameBoard(row2.children, 0);
-    populateGameBoard(row1.children, 7);
+    populateGameBoard();
     createCellEvents();
     startButton.disabled = true;
 });

@@ -45,9 +45,9 @@ p {
 }
 
 #row-2 {
-  display: flex;
+  display: flex; 
   flex-direction: row-reverse;
-}
+} 
 
 #row-1 {
   display: flex;
