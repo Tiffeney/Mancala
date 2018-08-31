@@ -67,7 +67,7 @@ function checkCellCount(row) {
     for (let i = 0; i < children.length; i++) {
         stonesInCell = parseInt(children[i].innerText);
         remainStones = remainStones + stonesInCell;
-        debugger
+        // debugger
     }
     return remainStones
 }
@@ -90,6 +90,8 @@ function toggleTurn() {
     currentTurn = nextTurn;
 }
 
+let nextCell;
+
 function moveStones(e) {
     let indexPosition = e.target.getAttribute('key');
     // console.log(indexPosition);
@@ -105,7 +107,7 @@ function moveStones(e) {
         console.log(currentCell.stones)
         for (let i = 1; i < currentCell.stones+1 ; i++) {
             let nextIndex = parseInt(indexPosition) + i;
-            let nextCell = gameboard[nextIndex];
+            nextCell = gameboard[nextIndex];
             if (nextCell === undefined) {
                 remainder++;
             } else {
@@ -124,7 +126,10 @@ function moveStones(e) {
         //if the number of stones equals ''
     
         populateGameBoard();
-        toggleTurn();
+        
+        if(nextCell.type !== 'big') {
+            toggleTurn();
+        }
         checkWinner();
     }
 }
