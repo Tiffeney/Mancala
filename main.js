@@ -97,12 +97,13 @@ function toggleTurn() {
 function messageTwo(message) {
     document.getElementById('message2').innerHTML = message;
 }
+let currentCell;
 
 function moveStones(e) {
     let indexPosition = e.target.getAttribute('key');
     // console.log(indexPosition);
 
-    let currentCell = gameboard[indexPosition];
+     currentCell = gameboard[indexPosition];
 
     if (currentCell.stones === 0) {
         messageTwo('This cell has no stones - go again');
@@ -127,12 +128,16 @@ function moveStones(e) {
             }
         }
         currentCell.stones = 0;
-    
+        console.log(currentCell)
 
         //if the number of stones equals ''
     
         populateGameBoard();
-        toggleTurn();
+         
+            // if (currentCell === "bigCell") {
+            //     toggleTurn()
+            // }
+        
         checkWinner();
     }
 }
