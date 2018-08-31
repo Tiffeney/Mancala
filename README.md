@@ -18,7 +18,7 @@ If the last gemstone is placed in an empty cup on the players own side, she/he m
 All the gemstones captured including the capturing stone are placed in the players own mancala.
 
 Check it out
-<a href=“https://tiffeney.github.io/Mancala/“>The Game Mancala</a>
+[Game - link](https://tiffeney.github.io/Mancala/)
 
 
 
