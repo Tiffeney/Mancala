@@ -29,10 +29,10 @@ function createGameBoard() {
             let cell = new Cell('big', 0, 'player2');
             gameboard.push(cell);
         } else if (i < 6) {
-            let cell = new Cell('normal', 1, 'Player1');
+            let cell = new Cell('normal', 4, 'Player1');
             gameboard.push(cell);
         } else {
-            let cell = new Cell('normal', 1, 'Player2');
+            let cell = new Cell('normal', 4, 'Player2');
             gameboard.push(cell);
         }
     }
