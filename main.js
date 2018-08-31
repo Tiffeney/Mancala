@@ -29,10 +29,10 @@ function createGameBoard() {
             let cell = new Cell('big', 0, 'player2');
             gameboard.push(cell);
         } else if (i < 6) {
-            let cell = new Cell('normal', 4, 'Player1');
+            let cell = new Cell('normal', 1, 'Player1');
             gameboard.push(cell);
         } else {
-            let cell = new Cell('normal', 4, 'Player2');
+            let cell = new Cell('normal', 1, 'Player2');
             gameboard.push(cell);
         }
     }
@@ -61,13 +61,33 @@ function populateGameBoard() {
     bigCells[1].innerText = gameboard[13].stones;
 }
 
+function checkCellCount(row) {
+    let remainStones = 0;
+    let children = row.children
+    for (let i = 0; i < children.length; i++) {
+        stonesInCell = parseInt(children[i].innerText);
+        remainStones = remainStones + stonesInCell;
+        debugger
+    }
+    return remainStones
+}
+
+function checkWinner() {
+    let player1Stones = gameboard[6].stones;    
+    let player2Stones = gameboard[13].stones;
+
+    if ((player1Stones + player2Stones) === 48) {
+        player1Stones >= 25 ? alert("Player1 Won!") : alert("Player 2 Won!")
+    } else if (checkCellCount(row2) === 0 || checkCellCount(row1) === 0) {    
+        player1Stones > player2Stones ? alert("Player1 Won!") : alert("Player 2 Won!")
+    } else {
+        return
+    }
+}; 
+
 function toggleTurn() {
     let nextTurn = (currentTurn === "Player1" ? "Player2" : "Player1");
     currentTurn = nextTurn;
-}
-
-function checkHit() {
-
 }
 
 function moveStones(e) {
@@ -104,8 +124,8 @@ function moveStones(e) {
         //if the number of stones equals ''
     
         populateGameBoard();
-        checkHit();
         toggleTurn();
+        checkWinner();
     }
 }
 
