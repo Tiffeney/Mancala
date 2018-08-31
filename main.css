@@ -55,8 +55,9 @@ p {
 }
 
 .cell {
+  font-family: 'Helvetica',sans-serif;
   display: inline-block;
-  width: 15%;
+  width: 17%;
   border-radius: 50%;
   height: 50px;
   background: gray;
@@ -69,11 +70,12 @@ p {
 
 .big-cell {
   background: gray;
-  height: 100%;
+  height: calc(100% - 40px);
   border-radius: 20px;
   text-align: center;
-    
-  
+  padding: 40px 0 0 0;
+  font-family: 'Helvetica',sans-serif;
+  font-size: 24px;
 }
 
 #id {
@@ -96,9 +98,29 @@ height:34px;
 padding: 20px;
 position: absolute;
 top: 30%;
-margin-left: 570px;
+margin-left: 597px;
 }
 
 body {
   background:lightcyan;
+}
+
+.message-box {
+  background: #e0bf67;
+  color: #886f2c;
+  padding: 10px 15px;
+  width: 200px;
+  font-size: 14px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 10px;
+  font-family: 'Helvetica', sans-serif;
+}
+
+#message1 {
+  float: left;
+}
+
+#message2 {
+  float: right;
 }

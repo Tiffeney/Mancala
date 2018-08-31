@@ -16,6 +16,10 @@ function setMessage(message) {
     document.getElementById('message').innerHTML = message;
 }
 
+function setCurrentPlayer(message) {
+    document.getElementById('currentPlayer').innerHTML = 'Turn: ' + message;
+}
+
 // GLOBAL VARIABLES
 let startButton = document.querySelector('button');
 let cells = document.querySelectorAll('.cell');
@@ -41,13 +45,6 @@ function createGameBoard() {
         }
     }
 }
-
-// function populateGameBoard(row, startPosition) {
-//     for (let i = 0; i < row.length; i++) {
-//         let currentPosition = i + startPosition;
-//         row[i].innerText = gameboard[currentPosition].stones;
-//     }
-// }
 
 function populateGameBoard() {
     
@@ -92,12 +89,13 @@ function checkWinner() {
 function toggleTurn() {
     let nextTurn = (currentTurn === "Player1" ? "Player2" : "Player1");
     currentTurn = nextTurn;
+    setCurrentPlayer(currentTurn)
 }
 
+let nextCell;
 function messageTwo(message) {
     document.getElementById('message2').innerHTML = message;
 }
-let currentCell;
 
 function moveStones(e) {
     let indexPosition = e.target.getAttribute('key');
@@ -114,7 +112,7 @@ function moveStones(e) {
         console.log(currentCell.stones)
         for (let i = 1; i < currentCell.stones+1 ; i++) {
             let nextIndex = parseInt(indexPosition) + i;
-            let nextCell = gameboard[nextIndex];
+            nextCell = gameboard[nextIndex];
             if (nextCell === undefined) {
                 remainder++;
             } else {
@@ -133,11 +131,13 @@ function moveStones(e) {
         //if the number of stones equals ''
     
         populateGameBoard();
-         
-            // if (currentCell === "bigCell") {
-            //     toggleTurn()
-            // }
+
+        console.log(nextCell)
         
+        if(nextCell === undefined || nextCell.type !== 'big') {
+            toggleTurn();
+        }
+        messageTwo("") 
         checkWinner();
     }
 }
