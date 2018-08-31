@@ -12,6 +12,10 @@ class Cell {
 let gameboard = [];
 let currentTurn = 'Player1';
 
+function setMessage(message) {
+    document.getElementById('message').innerHTML = message;
+}
+
 // GLOBAL VARIABLES
 let startButton = document.querySelector('button');
 let cells = document.querySelectorAll('.cell');
@@ -67,7 +71,7 @@ function checkCellCount(row) {
     for (let i = 0; i < children.length; i++) {
         stonesInCell = parseInt(children[i].innerText);
         remainStones = remainStones + stonesInCell;
-        debugger
+        // debugger
     }
     return remainStones
 }
@@ -77,9 +81,9 @@ function checkWinner() {
     let player2Stones = gameboard[13].stones;
 
     if ((player1Stones + player2Stones) === 48) {
-        player1Stones >= 25 ? alert("Player1 Won!") : alert("Player 2 Won!")
+        player1Stones >= 25 ? setMessage("Player1 Won!") : setMessage("Player 2 Won!")
     } else if (checkCellCount(row2) === 0 || checkCellCount(row1) === 0) {    
-        player1Stones > player2Stones ? alert("Player1 Won!") : alert("Player 2 Won!")
+        player1Stones > player2Stones ? setMessage("Player1 Won!") : setMessage("Player 2 Won!")
     } else {
         return
     }
@@ -90,6 +94,10 @@ function toggleTurn() {
     currentTurn = nextTurn;
 }
 
+function messageTwo(message) {
+    document.getElementById('message2').innerHTML = message;
+}
+
 function moveStones(e) {
     let indexPosition = e.target.getAttribute('key');
     // console.log(indexPosition);
@@ -97,9 +105,9 @@ function moveStones(e) {
     let currentCell = gameboard[indexPosition];
 
     if (currentCell.stones === 0) {
-        alert('This cell has no stones - go again');
+        messageTwo('This cell has no stones - go again');
     } else if (currentCell.owner != currentTurn) {
-        alert("Can't Click on this cell.") 
+        messageTwo("Can't Click on this cell.") 
     } else {
         let remainder = 0;
         console.log(currentCell.stones)
